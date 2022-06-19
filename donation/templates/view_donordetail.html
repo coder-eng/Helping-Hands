@@ -1,0 +1,33 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+
+    <!-- here you go -->
+<div class="card-shadow-lg bg-white mt-3" style="font-family: 'Times New Roman'">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid orange">View Donor Details</h5>
+        <div class="container-fluid">
+            <table id="example" class="table table-bordered table-striped">
+                <tr>
+                    <td colspan="8" style="font-size: 20px; color: green;">Donor Details</td>
+                </tr>
+                <tr>
+                    <th>Donor Name</th>
+                    <td>{{ donor.user.first_name }} {{ donor.user.last_name }}</td>
+                    <th>Contact</th>
+                    <td>{{ donor.contact }}</td>
+                    <th>Email</th>
+                    <td>{{ donor.user.username }}</td>
+                    <th>Picture</th>
+                    <td><img src="{{ donor.userpic.url }}" width="45px" height="45px"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" style="font-size: 20px; color: red">
+                        <a href="{% url 'delete_donor' donor.user.id %}" onclick="return confirm('Want to delete donor record?')" class="text-danger">Delete</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

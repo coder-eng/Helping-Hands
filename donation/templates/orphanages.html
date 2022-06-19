@@ -1,0 +1,96 @@
+{% load static %}
+
+<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <title>Helping Hands</title>
+
+    <!-- navigation bar started -->
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color:white">
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                <img src="{% static 'images/logo.png' %}" width="60px" height="60px">
+                <span style="color: lightgreen">Helping Hands</span></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse text-center" id="myMenu">
+                    <ul class="navbar-nav pl-5 custom-nav ml-auto">
+                        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'about_us' %}" class="nav-link">About Us</a></li>
+                        <li class="nav-item"><a href="{% url 'orphanages' %}" class="nav-link">Orphanages</a></li>
+
+                        <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link">Contact Us</a></li>
+                        <li class="nav-item"><a href="{% url 'our_gallery' %}" class="nav-link">Gallery</a></li>
+                        <li class="nav-item"><a href="{% url 'all_logins' %}" class="nav-link">Login</a></li>
+{#                        {% else %}#}
+{#                            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home Page</a></li>#}
+{#                        {% endif %}#}
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <!-- navigation bar ended -->
+
+
+{% load static %}
+{% block main %}
+<style>
+body{
+    background-image: linear-gradient(135.9deg, rgba(109, 25, 252, 1) 16.4%, rgba(125, 31, 160, 1));
+    min-height: 100vh;
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 390px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 8px;
+  text-align: justify;
+}
+.desc{
+    font-weight: bold;
+}
+
+</style>
+<body style="font-family: 'Times New Roman'">
+{% for i in all_orphanges %}
+<div class="gallery shadow p-3 mb-5 bg-white rounded d-inline">
+    <img src="{{i.orphanageImage.url}}" alt="Orphanage Pic" width="700px" height="500px" class="img-thumbnail" title="Orphanage Pic">
+    <div class="desc text-muted"><img src="{{ i.ownerImage.url }}" style="width: 50px; height: 50px; border-radius: 50%; margin-right: 5px" title="Orphanage Manager" class="img-thumbnail">{{ i.firstName }} {{ i.lastName }}</div>
+    <div class="desc"><a href="tel:{{ i.contact }}" class="text-muted"><i class="fa fa-phone" aria-hidden="true" style="color:darkgreen;margin-right: 5px; font-size: 30px"></i>{{ i.contact }}</a></div>
+    <div class="desc"><a href="mailto:{{ i.email }}" class="text-muted"><i class="fa fa-envelope" aria-hidden="true" style="color:red;margin-right: 5px; font-size: 30px"></i>{{ i.email }}</a></div>
+
+    {% if i.is_verified %}
+    <i class="fa fa-inr desc" aria-hidden="true" style="color:darkgreen;margin-right: 5px; font-size: 30px"></i><button class="py-1 px-2" style="color: white; background-color: green; margin-bottom: 10px; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="color: white;">Donate Now</a></button>
+    <div class="desc"><a href="{% url 'orphanage_more_detail' %}" class="text-success"><i class="fa fa-info-circle" aria-hidden="true" style="color:darkgreen;margin-right: 5px; font-size: 30px"></i>More Details...</a></div>
+    {% endif %}
+
+</div>
+{% endfor %}
+
+{% endblock %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% include 'footer.html' %}

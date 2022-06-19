@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Helping Hands</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+</head>
+<body>
+{% include 'navigation.html' %}
+<hr class="mt-0">
+<div class="container mt-5" style="font-family: 'Times New Roman'">
+    <div class="row mt-5">
+       <div class="col-lg-4 mb-5">
+           <div class="card" style="width:300px">
+               <img src="{% static 'images/donor_login_pic.png' %}" class="card-img-top" style="width: 100%; height: 200px">
+               <div class="card-body">
+                   <h4 class="card-title">Donor Login Here</h4>
+                   <p class="card-text" style="font-size: 20px">
+                       Sign-up/Login button below
+                   </p>
+                   <a href="{% url 'donor_login' %}" class="btn btn-success">Donor Gateway </a>
+               </div>
+           </div>
+       </div>
+
+        <div class="col-lg-4">
+           <div class="card" style="width:300px">
+               <img src="{% static 'images/volunteer_login_pic.png' %}" class="card-img-top" style="width: 100%; height: 200px">
+               <div class="card-body">
+                   <h4 class="card-title">Volunteer Login Here</h4>
+                   <p class="card-text" style="font-size: 20px">
+                       Sign-up/Login button below
+                   </p>
+                   <a href="{% url 'volunteer_login' %}" class="btn btn-success">Volunteer Gateway </a>
+               </div>
+           </div>
+       </div>
+
+        <div class="col-lg-4">
+           <div class="card" style="width:300px">
+               <img src="{% static 'images/admin_login_pic.png' %}" class="card-img-top" style="width: 100%; height: 200px">
+               <div class="card-body">
+                   <h4 class="card-title">Admin Login Here</h4>
+                   <p class="card-text" style="font-size: 20px">
+                       Login button below
+                   </p>
+                   <a href="{% url 'admin_login' %}" class="btn btn-success">Admin Gateway </a>
+               </div>
+           </div>
+       </div>
+    </div>
+</div>
+
+{% include "footer.html" %}
+</body>
+</html>

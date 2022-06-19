@@ -1,0 +1,38 @@
+{% extends 'volunteer_base.html' %}
+
+{% block main %}
+
+    <!-- here you go -->
+<div class="card-shadow-lg bg-white mt-3" style="font-family: 'Times New Roman'">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid orange">All Delivered Donation</h5>
+        <div class="container-fluid">
+            <table id="example" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Donation Name</th>
+                    <th>Donation Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in donation %}
+{#                    {% if i.status not in condition%}#}
+                        {% if i.volunteerremark %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.donationname }}</td>
+                    <td>{{ i.donationdate }}</td>
+                    <td>{{ i.status }}</td>
+                    <td><a href="{% url 'see_deliver_donationdetail' i.id %}" class="text-success">Details</a></td>
+                </tr>
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

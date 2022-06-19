@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Helping Hands</title>
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+</head>
+<body id="login" style="font-family: 'Times New Roman';background-image: url({% static 'images/donationbg1.jpeg' %})">
+{% include 'navigation.html' %}
+<<hr class="mt-0">
+
+<div class="row">
+    <div class="col-lg-5 m-auto">
+        <div class="card mt-5 bg-dark">
+            <div class="card-title text-center mt-3">
+                <img src="{% static 'images/useravatar.png' %}" width="150" height="150">
+                <h2 class="text-white">Donor Login</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user fa-2x"></i>
+                            </span>
+                        </div>
+                        <input type="email" name="emailid" class="form-control py-4" placeholder="Email">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-lock fa-2x" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="password" name="pwd" class="form-control py-4" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-success px-5">
+                    <a href="{% url 'donor_reg' %}" class="float-right text-white mt-2">Create Account <i class="fa fa-angle-double-right"  aria-hidden="true"></i></a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% if error == "no" %}
+<script>
+    alert("Successfully logged in");
+    window.location = ('{% url 'donor_profile' request.user.donor_set.all.0.id %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert("Invalid Login Credentials!");
+</script>
+{% endif %}
+</html>
+
+{#{% include 'footer.html' %}#}

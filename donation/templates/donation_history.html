@@ -1,0 +1,57 @@
+{% extends 'donor_base.html' %}
+
+{% block main %}
+
+    <!-- here you go -->
+<div class="card-shadow-lg bg-white mt-3" style="font-family: 'Times New Roman'">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid orange">Your Donation History</h5>
+        <div class="container-fluid">
+            <table id="example" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Donation Name</th>
+                    <th>Donation Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in donation %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.donationname }}</td>
+                    <td>{{ i.donationdate }}</td>
+{#                    <td style="text-transform: capitalize">{{ i.status }}</td>#}
+                    {% if i.status == "reject" %}
+                    <td style="text-transform: capitalize">{{ i.status }}ed</td>
+                    <td><a href="{% url 'donor_rejected_donationdetail' i.id %}" class="text-danger">Details</a></td>
+                    {% endif %}
+
+                    {% if i.status == "pending" %}
+                    <td style="text-transform: capitalize">{{ i.status }}</td>
+                    <td class="text-primary"><a href="{% url 'donor_pending_donationdetail' i.id %}">Details</a></td>
+                    {% endif %}
+
+                    {% if i.status == "accept" %}
+                    <td style="text-transform: capitalize">{{ i.status }}ed</td>
+                    <td><a href="{% url 'donor_accepted_donationdetail' i.id %}" class="text-success">Details</a></td>
+                    {% endif %}
+
+                     {% if i.status == "Donation Not Received" %}
+                    <td style="text-transform: capitalize">{{ i.status }}</td>
+                    <td><a href="{% url 'donor_donationNotReceived_donationdetail' i.id %}" class="text-danger">Details</a></td>
+                     {% endif %}
+                    {% if i.status not in conditions %}
+                    <td style="text-transform: capitalize">{{ i.status }}</td>
+                    <td><a href="{% url 'donor_delivered_donationdetail' i.id %}" style="color: darkgreen; font-weight: bolder">Details</a></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

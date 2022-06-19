@@ -1,0 +1,244 @@
+{% load static %}
+<head>
+<meta charset="UTF-8" xmlns="http://www.w3.org/1999/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+    <title>Helping Hands</title>
+<style>
+    *{
+        font-family: "Times New Roman";
+    }
+</style>
+    <!-- navigation bar started -->
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color:white">
+        <div class="container">
+            <a href="/" class="navbar-brand">
+                <img src="{% static 'images/logo.png' %}" width="60px" height="60px">
+                <span style="color: lightgreen">Helping Hands</span></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <div class="collapse navbar-collapse text-center" id="myMenu">
+                    <ul class="navbar-nav pl-5 custom-nav ml-auto">
+                        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'about_us' %}" class="nav-link">About Us</a></li>
+                        <li class="nav-item"><a href="{% url 'orphanages' %}" class="nav-link">Orphanages</a></li>
+
+                        <li class="nav-item"><a href="{% url 'contact_us' %}" class="nav-link">Contact Us</a></li>
+                        <li class="nav-item"><a href="{% url 'our_gallery' %}" class="nav-link">Gallery</a></li>
+                        <li class="nav-item"><a href="{% url 'all_logins' %}" class="nav-link">Login</a></li>
+{#                        {% else %}#}
+{#                            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home Page</a></li>#}
+{#                        {% endif %}#}
+                    </ul>
+                </div>
+        </div>
+    </nav>
+    <!-- navigation bar ended -->
+
+
+{% load static %}
+{% block main %}
+<style>
+*{
+        font-family: "Times New Roman";
+    }
+.about-section{
+    background-image: linear-gradient(135.9deg, rgba(109, 25, 252, 1) 16.4%, rgba(125, 31, 160, 1));
+}
+body{
+    background-image: linear-gradient(135.9deg, rgba(109, 25, 252, 1) 16.4%, rgba(125, 31, 160, 1));
+    {#min-height: 100vh;#}
+    margin: 0px;
+    padding: 0px;
+    font-family: "Times New Roman";
+}
+div.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 390px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 8px;
+  text-align: justify;
+}
+.desc{
+    font-weight: bold;
+}
+</style>
+{#new css#}
+<style>
+body {
+  font-family: "Times New Roman";
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body style="font-family: 'Times New Roman'">
+<div class="about-section" style="background-image: linear-gradient(135.9deg, rgba(109, 25, 252, 1) 16.4%, rgba(125, 31, 160, 1));" >
+  <h1 class="">About Helping Hands</h1>
+    <hr class="mt-3" style="border-bottom: 1px solid white">
+    <p><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i>
+  We are dedicated to bring orphanages together and help the orphan.</p>
+  <p>Hope for those who are in need
+  <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+</div>
+
+<h2 style="text-align:center; color: white; margin-top: 5px">How Helping Hands Help?</h2>
+<div class="row ">
+  <div class="column col-4 ">
+    <div class="card">
+      <img src="{% static 'images/home (1).jpg' %}" alt="" style="width: 100%; height: 250px">
+      <div class="container">
+        <h2>Home for Everyone</h2>
+        <p class="title" style="font-size: 25px; "><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i> Home for Orphans <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+        <p><button class="button" style="background-color: green; color: white; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="text-decoration: none">Help Now</a></button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column col-8">
+    <div class="card">
+      <img src="{% static 'images/footwear.png' %}" alt="" style="height: 250px; width: 100%">
+      <div class="container">
+        <h2>Footwear Donation</h2>
+        <p class="title" style="font-size: 25px; "><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i> Donate your footwear to the orphan in need <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+        <p><button class="button" style="background-color: green; color: white; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="text-decoration: none">Help Now</a></button></p>
+      </div>
+    </div>
+  </div>
+
+    <div class="column col-6">
+    <div class="card">
+      <img src="{% static 'images/stationery_donation.jpg' %}" alt="" style="width: 100%; height: 250px">
+      <div class="container">
+        <h2>Stationery Donation</h2>
+        <p class="title" style="font-size: 25px; "><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i>  Help them by sharing the stationery <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+        <p><button class="button" style="background-color: green; color: white; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="text-decoration: none">Help Now</a></button></p>
+      </div>
+    </div>
+  </div>
+
+    <div class="column col-6">
+    <div class="card">
+      <img src="{% static 'images/food___donation.jpg' %}" alt="" style="width: 100%; height: 250px">
+      <div class="container">
+        <h2>Food Donation</h2>
+        <p class="title" style="font-size: 25px; "><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i> Share the food with orphans <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+        <p><button class="button" style="background-color: green; color: white; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="text-decoration: none">Help Now</a></button></p>
+      </div>
+    </div>
+  </div>
+
+    <div class="column col-8">
+    <div class="card">
+      <img src="{% static 'images/m6.jpg' %}" alt="" style="height: 250px; width: 100%">
+      <div class="container">
+        <h2>Teach the Orphans</h2>
+        <p class="title" style="font-size: 25px; "><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i> Can help by teaching them also <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+        <p><button class="button" style="background-color: green; color: white; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="text-decoration: none">Help Now</a></button></p>
+      </div>
+    </div>
+  </div>
+
+    <div class="column col-4">
+    <div class="card">
+      <img src="{% static 'images/Indian-Rupee-symbol.png' %}" alt="" style="width: 100%; height: 250px">
+      <div class="container">
+        <h2>Donate the Amount</h2>
+        <p class="title" style="font-size: 25px; "><i class="fa fa-quote-left text-primary" aria-hidden="true" ></i> Provide little part of earning to motivate orphans <i class="fa fa-quote-right  text-primary" aria-hidden="true"></i></p>
+        <p><button class="button" style="background-color: green; color: white; border-radius: 3px"><a href="https://www.instamojo.com/@haiderraza098" target="_self" style="text-decoration: none">Help Now</a></button></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<h2 style="text-align:center; color: white; margin-top: 5px">Stay connected for more ways to help</h2>
+</body>
+{% endblock %}
+{% include 'footer.html' %}

@@ -1,0 +1,95 @@
+{% extends 'volunteer_base.html' %}
+
+{% block main %}
+    
+    <!-- here you go -->
+<div class="card-shadow-lg bg-white mt-3" style="font-family: 'Times New Roman'">
+    <div class="card-body">
+        <h5 class="p-2" style="border-bottom: 2px solid orange">View  Donation Details</h5>
+        <div class="container-fluid">
+            <table class="table table-bordered table-striped">
+               <tr class="bg-lightgrey">
+                   <td colspan="4" style="font-weight: bolder; color: green; font-size: 20px">Donor Detail</td>
+               </tr>
+                <tr>
+                    <th>Donor Name</th>
+                    <td>{{ donation.donor.user.first_name }} {{ donation.donor.user.last_name }}</td>
+                    <th>Donor Contact</th>
+                    <td>{{ donation.donor.contact }}</td>
+                </tr>
+                <tr>
+                    <th>Donor Email</th>
+                    <td>{{ donation.donor.user.username }}</td>
+                    <th>Donor Picture</th>
+                    <td><img src="{{ donation.donor.userpic.url }}" width="50px" height="50px"></td>
+                </tr>
+                <tr class="bg-lightgrey">
+                   <td colspan="4" style="font-weight: bolder; color: green; font-size: 20px">Donation Detail</td>
+               </tr>
+                <tr>
+                    <th>Donation Name</th>
+                    <td>{{ donation.donationname}}</td>
+                    <th>Donation Picture</th>
+                      <td><img src="{{ donation.donationpic.url }}" width="50px" height="50px"></td>
+                </tr>
+                 <tr>
+                    <th>Collection Location</th>
+                    <td>{{ donation.collectionloc}}</td>
+                    <th>Donation Date</th>
+                      <td>{{ donation.donationdate }}</td>
+                </tr>
+                 <tr>
+                    <th>Status</th>
+                    <td style="text-transform: capitalize"> {{ donation.status}}ed</td>
+                    <th>Updated Date</th>
+                      <td>{{ donation.updationdate }}</td>
+                </tr>
+
+                <tr>
+                    <th>Admin Remark</th>
+                    <td colspan="3">{{ donation.adminremark}}</td>
+                </tr>
+
+
+
+
+                 <tr>
+                    <th>Donation Area</th>
+                    <td style="text-transform: capitalize" colspan="3"> {{ donation.donationarea.areaname}}</td>
+
+                </tr>
+
+                <tr>
+                    <th>Volunteer</th>
+                    <td colspan="3">{{ donation.volunteer.user.username }} [{{ donation.volunteer.user.first_name }} {{ donation.volunteer.user.last_name }}]</td>
+                </tr>
+
+                <tr>
+             <th>Volunteer Remark</th>
+             <td colspan="3">{{ donation.volunteerremark }}</td>
+             </tr>
+
+{#             <tr>#}
+{#             <th>Donation Delivery Picture</th>#}
+{#             <td colspan="3"><img src="{{ donation.gallery_set.all.0.deliverypic.url }}" width="50px" height="50px"></td>#}
+{#             </tr>#}
+                <tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+ {% if error == "no" %}
+<script>
+    alert("Donation status and delivery picture updated successfully");
+    window.location = ('{% url 'donationrec_detail' donation.id %}');
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong! Try again");
+</script>
+{% endif %}
+{% endblock %}
